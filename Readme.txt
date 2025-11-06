@@ -35,3 +35,21 @@ Agregar al mlflow.ipynb
     mlflow.sklearn.log_model(modelo, "modelo_iris",  input_example=input_example)
 
 
+Para cDcoker
+Crear dockerfile con:
+###################
+FROM python:3.10
+
+RUN pip install mlflow
+
+EXPOSE 5000
+
+CMD ["mlflow", "server", "--backend-store-uri", "sqlite:///mlflow.db", "--default-artifact-root", "/mlruns", "--host", "0.0.0.0", "--port", "5000"]
+###############
+Y ejecutar
+    docker run -p 5000:5000 mlflow-server
+
+
+
+
+
